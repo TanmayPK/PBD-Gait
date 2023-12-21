@@ -21,16 +21,13 @@ in_folder_path = 'in'
 out_folder_path = 'out'
 
 in_folder_videos = get_video_files(in_folder_path)
-out_folder_videos = get_video_files(out_folder_path)
+# out_folder_videos = get_video_files(out_folder_path)
 
 # Insert videos with timestamps older than 7 days for testing purposes
 older_than_7_days = datetime.now() - timedelta(days=10)
 
 for video in in_folder_videos:
     insert_video(video, 'in', timestamp=older_than_7_days.strftime('%Y-%m-%d %H:%M:%S'))
-
-for video in out_folder_videos:
-    insert_video(video, 'out', timestamp=older_than_7_days.strftime('%Y-%m-%d %H:%M:%S'))
 
 # Retrieve all videos from the database
 all_videos = get_all_videos()
